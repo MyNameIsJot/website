@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Aman Lall</title>
+      <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+      <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+     <div class="content">
+          <div class="random">
+               <span class="nbr ltr">0</span>
+               <span class="nbr ltr">0</span>
+               <span class="nbr ltr">0</span>
+               <span class="nbr ltr">0</span>
+               <span class="nbr ltr">0</span>
+               <span class="nbr ltr">0</span>
+               <span class="nbr ltr">0</span>
+          </div>
+     </div>
+
+
+     <div class="wrapper">
+
+
+       <!--  <div id="logo">
+            <img src='logo2.png' height="50" width="50">
+          </div> -->
+
+        <nav>
+          
+          <div class="logo">
+            <img src='logo2.png' height="50" width="50">
+          </div>
+
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Me</a></li>
+            <li><a href="#">My Work</a></li>
+            <li><a href="#">Contact Me</a></li>
+            <li><a class="active" href="#">Resume</a></li>
+          </ul>
+        </nav>
+
+      <section class="sec1"></section>
+      <section class="content">
+        <p> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
+        <p> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
+      </section>
+    </div>
+
+     <script type="text/javascript">
+
+     $(document).ready(function() {
+
+     var $randomnbr = $('.nbr');
+     var $timer = 30;
+     var $it;
+     var $data = 0;
+     var index;
+     var change;
+     var letters = ["W", "e", "l", "c", "o", "m", "e"];
+
+     $randomnbr.each(function() {
+
+     change = Math.round(Math.random()*100);
+     $(this).attr('data-change', change);
+
+     });
+
+     function random() {
+          return Math.round(Math.random()*9);
+     };
+
+     function select() {
+          return Math.round(Math.random()*$randomnbr.length+1);
+     };
+
+     function value() {
+          $('.nbr:nth-child('+select()+')').html(''+random()+'');
+          $('.nbr:nth-child('+select()+')').attr('data-number', $data);
+          $data++;
+
+          $randomnbr.each(function() {
+               if(parseInt($(this).attr('data-number')) > parseInt($(this).attr('data-change'))) {
+                    index = $('.ltr').index(this);
+                    $(this).html(letters[index]);
+                    $(this).removeClass('nbr');
+               }
+          });
+     };
+
+     $it = setInterval(value, $timer);
+
+     });
+
+     </script>
+
+
+
+</body>
+</html>
